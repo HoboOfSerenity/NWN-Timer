@@ -1,0 +1,38 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="NWN_Timer.Views.SaveProfileDialog"
+        Title="Save Profile As"
+        Width="320"
+        Height="155"
+        MinWidth="320"
+        MinHeight="155"
+        CanResize="False"
+        ShowInTaskbar="False"
+        WindowStartupLocation="CenterOwner">
+
+    <StackPanel Margin="16"
+                Spacing="10">
+
+        <TextBlock Text="Profile name:"
+                   FontWeight="SemiBold"/>
+
+        <TextBox x:Name="ProfileNameBox"
+                 PlaceholderText="Character name"/>
+
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    Spacing="8">
+
+            <Button Content="Cancel"
+                    Click="Cancel_Click"
+                    MinWidth="70"/>
+
+            <Button Content="Save"
+                    Click="Save_Click"
+                    MinWidth="70"/>
+
+        </StackPanel>
+
+    </StackPanel>
+
+</Window>

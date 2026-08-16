@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="NWN Timer/NWN_Timer.Desktop/NWN_Timer.Desktop.csproj" />
+  <Project Path="NWN Timer/NWN_Timer/NWN_Timer.csproj" />
+</Solution>

@@ -1,0 +1,368 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:NWN_Timer.ViewModels"
+        x:Class="NWN_Timer.Views.MainWindow"
+        x:DataType="vm:MainViewModel"
+        Title="NWN Timer"
+        Width="430"
+        Height="600"
+        MinWidth="430"
+        MinHeight="600"
+        WindowStartupLocation="CenterScreen">
+
+    <Window.Styles>
+        <Style Selector="TextBlock.warningRed">
+            <Setter Property="Foreground" Value="Red"/>
+        </Style>
+    </Window.Styles>
+
+    <ScrollViewer>
+
+        <StackPanel Margin="25"
+                    Spacing="18">
+
+            <!-- HEADER -->
+
+            <StackPanel Orientation="Horizontal"
+                        Spacing="10">
+
+                <TextBlock Text="NWN Timer"
+                           FontSize="28"
+                           FontWeight="Bold"
+                           VerticalAlignment="Center"/>
+
+                <Button Content="Start All"
+                        Command="{Binding StartAllCommand}"
+                        MinWidth="0"
+                        Padding="8,4"
+                        VerticalAlignment="Center"/>
+
+                <Button Content="Stop &amp; Reset All"
+                        Command="{Binding StopAndResetAllCommand}"
+                        MinWidth="0"
+                        Padding="8,4"
+                        VerticalAlignment="Center"/>
+
+            </StackPanel>
+
+            <!-- PROFILES -->
+
+<StackPanel Orientation="Horizontal"
+            Spacing="6">
+
+    <TextBlock Text="Profile:"
+               VerticalAlignment="Center"/>
+
+    <ComboBox ItemsSource="{Binding Profiles}"
+              SelectedItem="{Binding SelectedProfile, Mode=TwoWay}"
+              Width="100"
+              MinWidth="0"/>
+
+    <Button Content="Save"
+            Command="{Binding SaveSelectedProfileCommand}"
+            MinWidth="0"
+            Padding="8,3"/>
+
+    <Button Content="Save As"
+            Click="SaveAsButton_Click"
+            MinWidth="0"
+            Padding="8,3"/>
+
+    <Button Content="Customize"
+            Click="CustomizeButton_Click"
+            MinWidth="0"
+            Padding="8,3"/>
+
+</StackPanel>
+
+
+            <!-- ROUNDS -->
+
+            <Border BorderThickness="1"
+                    CornerRadius="8"
+                    Padding="12">
+
+                <Grid RowDefinitions="Auto,Auto"
+                      ColumnDefinitions="70,60,73,Auto"
+                      ColumnSpacing="10"
+                      RowSpacing="8">
+
+                    <TextBlock Grid.Row="0"
+                               Grid.Column="0"
+                               Text="{Binding RoundTimer.Name}"
+                               FontSize="18"
+                               FontWeight="SemiBold"
+                               VerticalAlignment="Center"/>
+
+                    <Button Grid.Row="0"
+                            Grid.Column="1"
+                            Content="Start"
+                            Command="{Binding RoundTimer.StartTimerCommand}"
+                            Width="60"
+                            MinWidth="0"
+                            Padding="6,3"/>
+
+                    <Button Grid.Row="0"
+                            Grid.Column="2"
+                            Grid.ColumnSpan="2"
+                            Content="Stop &amp; Reset"
+                            Command="{Binding RoundTimer.StopAndResetTimerCommand}"
+                            Width="110"
+                            MinWidth="0"
+                            Padding="6,3"
+                            HorizontalAlignment="Left"/>
+
+                    <!-- Duration -->
+                    <StackPanel Grid.Row="1"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="3"
+                                Orientation="Horizontal"
+                                Spacing="6">
+
+                        <TextBlock Text="Duration:"
+                                   Width="62"
+                                   VerticalAlignment="Center"/>
+
+                        <TextBox Text="{Binding RoundTimer.Amount}"
+                                 Width="48"
+                                 MinWidth="0"
+                                 FontSize="16"/>
+
+                    </StackPanel>
+
+                    <!-- Countdown -->
+                    <TextBlock Grid.Row="1"
+                               Grid.Column="2"
+                               Text="{Binding RoundTimer.TimeRemaining}"
+                               FontSize="16"
+                               FontWeight="Bold"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               Opacity="{Binding RoundTimer.CountdownOpacity}"
+                               Classes.warningRed="{Binding RoundTimer.IsCountdownRed}"/>
+
+                </Grid>
+
+            </Border>
+
+
+            <!-- TURNS -->
+
+            <Border BorderThickness="1"
+                    CornerRadius="8"
+                    Padding="12">
+
+                <Grid RowDefinitions="Auto,Auto"
+                      ColumnDefinitions="70,60,73,Auto"
+                      ColumnSpacing="10"
+                      RowSpacing="8">
+
+                    <TextBlock Grid.Row="0"
+                               Grid.Column="0"
+                               Text="{Binding TurnTimer.Name}"
+                               FontSize="18"
+                               FontWeight="SemiBold"
+                               VerticalAlignment="Center"/>
+
+                    <Button Grid.Row="0"
+                            Grid.Column="1"
+                            Content="Start"
+                            Command="{Binding TurnTimer.StartTimerCommand}"
+                            Width="60"
+                            MinWidth="0"
+                            Padding="6,3"/>
+
+                    <Button Grid.Row="0"
+                            Grid.Column="2"
+                            Grid.ColumnSpan="2"
+                            Content="Stop &amp; Reset"
+                            Command="{Binding TurnTimer.StopAndResetTimerCommand}"
+                            Width="110"
+                            MinWidth="0"
+                            Padding="6,3"
+                            HorizontalAlignment="Left"/>
+
+                    <!-- Duration -->
+                    <StackPanel Grid.Row="1"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="3"
+                                Orientation="Horizontal"
+                                Spacing="6">
+
+                        <TextBlock Text="Duration:"
+                                   Width="62"
+                                   VerticalAlignment="Center"/>
+
+                        <TextBox Text="{Binding TurnTimer.Amount}"
+                                 Width="48"
+                                 MinWidth="0"/>
+
+                    </StackPanel>
+
+                    <!-- Countdown -->
+                    <TextBlock Grid.Row="1"
+                               Grid.Column="2"
+                               Text="{Binding TurnTimer.TimeRemaining}"
+                               FontSize="16"
+                               FontWeight="Bold"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               Opacity="{Binding TurnTimer.CountdownOpacity}"
+                               Classes.warningRed="{Binding TurnTimer.IsCountdownRed}"/>
+
+                </Grid>
+
+            </Border>
+
+
+            <!-- HOURS -->
+
+            <Border BorderThickness="1"
+                    CornerRadius="8"
+                    Padding="12">
+
+                <Grid RowDefinitions="Auto,Auto"
+                      ColumnDefinitions="70,60,73,Auto"
+                      ColumnSpacing="10"
+                      RowSpacing="8">
+
+                    <TextBlock Grid.Row="0"
+                               Grid.Column="0"
+                               Text="{Binding HourTimer.Name}"
+                               FontSize="18"
+                               FontWeight="SemiBold"
+                               VerticalAlignment="Center"/>
+
+                    <Button Grid.Row="0"
+                            Grid.Column="1"
+                            Content="Start"
+                            Command="{Binding HourTimer.StartTimerCommand}"
+                            Width="60"
+                            MinWidth="0"
+                            Padding="6,3"/>
+
+                    <Button Grid.Row="0"
+                            Grid.Column="2"
+                            Grid.ColumnSpan="2"
+                            Content="Stop &amp; Reset"
+                            Command="{Binding HourTimer.StopAndResetTimerCommand}"
+                            Width="110"
+                            MinWidth="0"
+                            Padding="6,3"
+                            HorizontalAlignment="Left"/>
+
+                    <!-- Duration -->
+                    <StackPanel Grid.Row="1"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="3"
+                                Orientation="Horizontal"
+                                Spacing="6">
+
+                        <TextBlock Text="Duration:"
+                                   Width="62"
+                                   VerticalAlignment="Center"/>
+
+                        <TextBox Text="{Binding HourTimer.Amount}"
+                                 Width="48"
+                                 MinWidth="0"
+                                 FontSize="16"/>
+
+                    </StackPanel>
+
+                    <!-- Countdown -->
+                    <TextBlock Grid.Row="1"
+                               Grid.Column="2"
+                               Text="{Binding HourTimer.TimeRemaining}"
+                               FontSize="16"
+                               FontWeight="Bold"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               Opacity="{Binding HourTimer.CountdownOpacity}"
+                               Classes.warningRed="{Binding HourTimer.IsCountdownRed}"/>
+
+                </Grid>
+
+            </Border>
+
+
+            <!-- CUSTOM -->
+
+            <Border BorderThickness="1"
+                    CornerRadius="8"
+                    Padding="12">
+
+                <Grid RowDefinitions="Auto,Auto"
+                      ColumnDefinitions="70,60,73,Auto"
+                      ColumnSpacing="10"
+                      RowSpacing="8">
+
+                    <TextBlock Grid.Row="0"
+                               Grid.Column="0"
+                               Text="{Binding CustomTimer.Name}"
+                               FontSize="18"
+                               FontWeight="SemiBold"
+                               VerticalAlignment="Center"/>
+
+                    <Button Grid.Row="0"
+                            Grid.Column="1"
+                            Content="Start"
+                            Command="{Binding CustomTimer.StartTimerCommand}"
+                            Width="60"
+                            MinWidth="0"
+                            Padding="6,3"/>
+
+                    <Button Grid.Row="0"
+                            Grid.Column="2"
+                            Grid.ColumnSpan="2"
+                            Content="Stop &amp; Reset"
+                            Command="{Binding CustomTimer.StopAndResetTimerCommand}"
+                            Width="110"
+                            MinWidth="0"
+                            Padding="6,3"
+                            HorizontalAlignment="Left"/>
+
+                    <!-- Duration -->
+                    <StackPanel Grid.Row="1"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="3"
+                                Orientation="Horizontal"
+                                Spacing="6">
+
+                        <TextBlock Text="Duration:"
+                                   Width="62"
+                                   VerticalAlignment="Center"/>
+
+                        <TextBox Text="{Binding CustomTimer.Amount}"
+                                 Width="48"
+                                 MinWidth="0"/>
+
+                    </StackPanel>
+                    <ComboBox Grid.Row="1"
+          Grid.Column="3"
+          ItemsSource="{Binding CustomTimer.UnitOptions}"
+          SelectedItem="{Binding CustomTimer.SelectedUnit}"
+          Width="90"
+          MinWidth="0"
+          FontSize="16"
+          VerticalAlignment="Center"/>
+
+                    <!-- Countdown -->
+                    <TextBlock Grid.Row="1"
+                               Grid.Column="2"
+                               Text="{Binding CustomTimer.TimeRemaining}"
+                               FontSize="16"
+                               FontWeight="Bold"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               Opacity="{Binding CustomTimer.CountdownOpacity}"
+                               Classes.warningRed="{Binding CustomTimer.IsCountdownRed}"/>
+
+                </Grid>
+
+            </Border>
+
+        </StackPanel>
+
+    </ScrollViewer>
+
+</Window>

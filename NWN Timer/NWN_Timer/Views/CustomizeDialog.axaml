@@ -1,0 +1,200 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="NWN_Timer.Views.CustomizeDialog"
+        Title="Customize Timers"
+        Width="470"
+        Height="410"
+        MinWidth="470"
+        MinHeight="410"
+        CanResize="False"
+        ShowInTaskbar="False"
+        WindowStartupLocation="CenterOwner">
+
+    <StackPanel Margin="18"
+                Spacing="13">
+
+        <TextBlock Text="Timer Warnings"
+                   FontSize="22"
+                   FontWeight="Bold"/>
+
+
+        <!-- ROUNDS -->
+
+        <StackPanel Spacing="5">
+
+            <TextBlock Text="Rounds"
+                       FontSize="17"
+                       FontWeight="SemiBold"/>
+
+            <Grid ColumnDefinitions="70,50,20,55,170,55"
+                  ColumnSpacing="6">
+
+                <TextBlock Grid.Column="0"
+                           Text="Warn at:"
+                           VerticalAlignment="Center"/>
+
+                <TextBox Grid.Column="1"
+                         x:Name="RoundWarningBox"
+                         Width="50"
+                         MinWidth="0"/>
+
+                <TextBlock Grid.Column="3"
+                           Text="Sound:"
+                           VerticalAlignment="Center"/>
+
+                <ComboBox Grid.Column="4"
+                          x:Name="RoundSoundBox"
+                          Width="170"
+                          MinWidth="0"/>
+
+                <Button Grid.Column="5"
+                        Content="Test"
+                        Click="TestRoundSound_Click"
+                        MinWidth="0"/>
+
+            </Grid>
+
+        </StackPanel>
+
+
+        <!-- TURNS -->
+
+        <StackPanel Spacing="5">
+
+            <TextBlock Text="Turns"
+                       FontSize="17"
+                       FontWeight="SemiBold"/>
+
+            <Grid ColumnDefinitions="70,50,20,55,170,55"
+                  ColumnSpacing="6">
+
+                <TextBlock Grid.Column="0"
+                           Text="Warn at:"
+                           VerticalAlignment="Center"/>
+
+                <TextBox Grid.Column="1"
+                         x:Name="TurnWarningBox"
+                         Width="50"
+                         MinWidth="0"/>
+
+                <TextBlock Grid.Column="3"
+                           Text="Sound:"
+                           VerticalAlignment="Center"/>
+
+                <ComboBox Grid.Column="4"
+                          x:Name="TurnSoundBox"
+                          Width="170"
+                          MinWidth="0"/>
+
+                <Button Grid.Column="5"
+                        Content="Test"
+                        Click="TestTurnSound_Click"
+                        MinWidth="0"/>
+
+            </Grid>
+
+        </StackPanel>
+
+
+        <!-- HOURS -->
+
+        <StackPanel Spacing="5">
+
+            <TextBlock Text="Hours"
+                       FontSize="17"
+                       FontWeight="SemiBold"/>
+
+            <Grid ColumnDefinitions="70,50,20,55,170,55"
+                  ColumnSpacing="6">
+
+                <TextBlock Grid.Column="0"
+                           Text="Warn at:"
+                           VerticalAlignment="Center"/>
+
+                <TextBox Grid.Column="1"
+                         x:Name="HourWarningBox"
+                         Width="50"
+                         MinWidth="0"/>
+
+                <TextBlock Grid.Column="3"
+                           Text="Sound:"
+                           VerticalAlignment="Center"/>
+
+                <ComboBox Grid.Column="4"
+                          x:Name="HourSoundBox"
+                          Width="170"
+                          MinWidth="0"/>
+
+                <Button Grid.Column="5"
+                        Content="Test"
+                        Click="TestHourSound_Click"
+                        MinWidth="0"/>
+
+            </Grid>
+
+        </StackPanel>
+
+
+        <!-- CUSTOM -->
+
+        <StackPanel Spacing="5">
+
+            <TextBlock Text="Custom"
+                       FontSize="17"
+                       FontWeight="SemiBold"/>
+
+            <Grid ColumnDefinitions="70,50,20,55,170,55"
+                  ColumnSpacing="6">
+
+                <TextBlock Grid.Column="0"
+                           Text="Warn at:"
+                           VerticalAlignment="Center"/>
+
+                <TextBox Grid.Column="1"
+                         x:Name="CustomWarningBox"
+                         Width="50"
+                         MinWidth="0"/>
+
+                <TextBlock Grid.Column="3"
+                           Text="Sound:"
+                           VerticalAlignment="Center"/>
+
+                <ComboBox Grid.Column="4"
+                          x:Name="CustomSoundBox"
+                          Width="170"
+                          MinWidth="0"/>
+
+                <Button Grid.Column="5"
+                        Content="Test"
+                        Click="TestCustomSound_Click"
+                        MinWidth="0"/>
+
+            </Grid>
+
+        </StackPanel>
+
+
+        <TextBlock Text="Place .wav files beside NWN Timer to make them available."
+                   FontSize="11"
+                   Opacity="0.7"/>
+
+
+        <!-- BUTTONS -->
+
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    Spacing="8">
+
+            <Button Content="Cancel"
+                    Click="Cancel_Click"
+                    MinWidth="70"/>
+
+            <Button Content="OK"
+                    Click="OK_Click"
+                    MinWidth="70"/>
+
+        </StackPanel>
+
+    </StackPanel>
+
+</Window>
